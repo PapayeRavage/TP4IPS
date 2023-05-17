@@ -1,14 +1,19 @@
 pipeline {
-  agent any
+  agent {image 'puthon:3.7.2'}
   stages {
     stage('build') {
       steps {
-       echo 'build'
+       sh 'pip install -r requirements.txt
       }
     }
     stage('test') {
       steps {
-        echo 'test'
+        sh 'puthon test.py'
+      }
+      post {
+        always{
+          junit 'test-reports/*.xml'
+        }
       }
     }
   }
