@@ -1,5 +1,5 @@
 pipeline {
-  agent {image 'puthon:3.7.2'}
+  agent any
   stages {
     stage('build') {
       steps {
